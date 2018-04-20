@@ -28,6 +28,10 @@ bin/example-app: check-go-version
 bin/grpc-client: check-go-version
 	@go install -v -ldflags $(LD_FLAGS) $(REPO_PATH)/examples/grpc-client
 
+.PHONY: release-example-app
+release-example-app:
+	@go build -o /go/bin/example-app -v -ldflags $(LD_FLAGS) $(REPO_PATH)/cmd/example-app
+
 .PHONY: release-binary
 release-binary:
 	@go build -o /go/bin/dex -v -ldflags $(LD_FLAGS) $(REPO_PATH)/cmd/dex
